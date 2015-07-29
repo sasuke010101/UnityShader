@@ -151,11 +151,14 @@ public class ComputeDiffuseEnvironmentMap : MonoBehaviour {
 									originalDirection); 
 								// take tilt of texel compared 
 								// to face into account
-								weight = weight * Mathf.Max(0.0f, 
-								                            Vector3.Dot(filteredDirection, 
-								            originalDirection)); 
+//								weight = weight * Mathf.Max(0.0f, 
+//								                            Vector3.Dot(filteredDirection, 
+//								            originalDirection)); 
 								// directional filter 
 								// for diffuse illumination
+								weight = weight * Mathf.Pow(Mathf.Max(0.0f, 
+								                                      Vector3.Dot(filteredDirection, originalDirection)), 50.0f); 
+								//directional filter for specular illumination
 								totalWeight = totalWeight + weight; 
 								// instead of analytically 
 								// normalization, we just normalize 
